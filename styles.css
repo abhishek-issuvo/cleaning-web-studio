@@ -18,3 +18,6 @@ main:focus{outline:none}
   .nav-cta,.footer a,.actions .text-link{min-height:44px;display:inline-flex;align-items:center}
   .art-caption{max-width:100%}
 }
+
+/* Keep the rotated decorative backdrop inside the mobile viewport. */
+@media(max-width:700px){.art-orbit{transform:none}}
