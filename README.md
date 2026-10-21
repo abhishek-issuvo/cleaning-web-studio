@@ -23,7 +23,7 @@ A buildless, responsive website for a US web-design service focused on residenti
 
 ## Form behavior
 
-The form uses the documented Web3Forms endpoint `https://api.web3forms.com/submit`. Native labels, required fields, email and URL validation support keyboard and assistive-technology use. The optional URL requires a scheme such as `https://`. A hidden `botcheck` checkbox provides basic honeypot protection; it does not guarantee spam prevention.
+The form uses the documented Web3Forms endpoint `https://api.web3forms.com/submit`. Native labels, required fields, email and URL validation support keyboard and assistive-technology use. The optional URL accepts only `http://` or `https://`. Required text fields reject spaces-only input when JavaScript is enabled. A hidden `botcheck` checkbox provides basic honeypot protection; it does not guarantee spam prevention.
 
 With JavaScript, valid submissions send JSON, prevent duplicate concurrent requests, show an accessible pending state, and clear inputs only after a confirmed successful response. Errors and a 20-second timeout preserve the entries and offer an email alternative. A timeout cannot establish whether delivery occurred. Missing/placeholder keys are intercepted without transmitting the inquiry. Without JavaScript, the form uses a normal POST and Web3Forms’ own confirmation/error page; replace the key before launch for either mode.
 
@@ -45,3 +45,8 @@ From this directory, run `python3 -m http.server 8080` and open http://localhost
 ## Checks completed for this handoff
 
 JavaScript syntax validation passed. Structural checks passed for unique IDs, label associations, one H1 per page, internal anchors, and local asset references. Mocked submission checks passed for the placeholder key, honeypot rejection, confirmed success, server rejection, network failure, and timeout; errors preserve entries and success resets them. These mocks do not verify the external service. Browser visual/keyboard checks were not completed: the environment denied binding the local preview server. Real inbox delivery remains unverified until a live key is configured.
+
+
+## Audit and owner configuration checklist
+
+See [AUDIT.md](AUDIT.md) for fixes, source-check results, browser verification limits, required provider accounts, and the real submission acceptance test. **Live form delivery has not been verified.**

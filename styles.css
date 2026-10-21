@@ -4,3 +4,17 @@
 @media(max-width:700px){.wrap{width:calc(100% - 40px)}.site-header{min-height:85px;gap:12px}.brand{font-size:1.05rem}.brand-mark{font-size:1.75rem}nav{gap:15px}nav>a:not(.nav-cta){display:none}.nav-cta{padding:8px 12px;font-size:.75rem}.hero{grid-template-columns:1fr;padding-block:47px 40px;gap:35px}.hero h1{font-size:clamp(2.7rem,8.6vw,3.7rem)}.hero .eyebrow{font-size:.58rem}.lead{font-size:.96rem}.hero-art{width:100%;max-width:450px;margin:auto;padding-inline:9px}.art-orbit{inset:0 0 25px}.mini-nav>span{display:block}.intro-strip .wrap{display:block;padding-block:20px}.intro-strip p{font-size:.95rem}.intro-strip span{display:block;margin-top:8px;font-size:.52rem}.section{padding-block:55px}.section-heading{margin-bottom:30px}.benefit-grid,.offer-grid,.work-layout,.process,.faq-layout,.contact-layout{grid-template-columns:1fr;gap:28px}.benefit-grid article{padding-top:20px}.number{margin-bottom:12px}.benefit-grid h3{margin-bottom:12px}.benefit-grid p{margin-bottom:0}.work-section{padding-block:50px}.project-details{border-left:0;border-top:1px solid #bcc9b7;padding:26px 0 0}.offer{padding:27px}.scope{display:block}.scope h3{margin-bottom:14px}.process h3{margin-bottom:12px}.process span{margin-bottom:13px}.faq-layout{gap:15px}.contact-section{padding-block:50px}.contact-spark{display:none}.contact-layout>div>p:not(.eyebrow){max-width:none}.email-note{margin-top:23px}.contact-layout{gap:16px}form{padding:23px}.form-grid{grid-template-columns:1fr 1fr;gap:0 14px}.footer{padding-block:30px;gap:14px}.footer>div{flex-wrap:wrap;gap:18px}.footer>div>span{width:100%}.legal{padding-block:45px}}
 @media(max-width:400px){.form-grid{grid-template-columns:1fr}.wrap{width:calc(100% - 32px)}.brand{font-size:.95rem}.hero h1{font-size:2.65rem}.mini-main h2{font-size:2.45rem}.actions{align-items:flex-start;flex-direction:column}.mini-nav>span{font-size:.45rem}.form-intro{flex-direction:column;gap:3px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Audit fixes: readable controls, intrinsic sizing, and clear keyboard targets. */
+input,select,textarea{font-size:1rem;min-width:0;max-width:100%}
+.hero>*,.work-layout>*,.offer-grid>*,.contact-layout>*,.form-grid>*{min-width:0}
+.form-status,.legal a,.email-note a{overflow-wrap:anywhere}
+.form-status:focus{outline:3px solid #a56524;outline-offset:4px}
+main:focus{outline:none}
+.price{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline}
+.price span{margin-left:0}
+@media(max-width:700px){
+  label,.small,form .small,.scope p,.hero-note{font-size:.875rem}
+  .nav-cta,.footer a,.actions .text-link{min-height:44px;display:inline-flex;align-items:center}
+  .art-caption{max-width:100%}
+}

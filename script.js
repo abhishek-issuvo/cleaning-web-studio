@@ -13,7 +13,7 @@ if (form) {
   const showStatus = (message, state) => {
     status.textContent = message;
     status.dataset.state = state;
-    status.focus({ preventScroll: true });
+    status.focus();
   };
 
   for (const link of document.querySelectorAll('[data-service]')) {
@@ -22,9 +22,19 @@ if (form) {
     });
   }
 
+  const textFields = ['name', 'business_name', 'message'].map(name => form.elements[name]);
+  for (const field of textFields) {
+    field.addEventListener('input', () => field.setCustomValidity(''));
+  }
+
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    if (submitting || !form.reportValidity()) return;
+    if (submitting) return;
+    for (const field of textFields) {
+      field.value = field.value.trim();
+      field.setCustomValidity(field.value ? '' : 'Please enter more than spaces.');
+    }
+    if (!form.reportValidity()) return;
     if (form.elements.botcheck.checked) {
       showStatus('Your inquiry could not be sent. Please contact us by email.', 'error');
       return;
@@ -38,7 +48,6 @@ if (form) {
     submitting = true;
     button.disabled = true;
     button.textContent = 'Sending your inquiry…';
-    form.setAttribute('aria-busy', 'true');
     status.textContent = 'Sending your inquiry…';
     status.dataset.state = 'pending';
     const controller = new AbortController();
@@ -66,7 +75,6 @@ if (form) {
       submitting = false;
       button.disabled = false;
       button.innerHTML = originalButton;
-      form.removeAttribute('aria-busy');
     }
   });
 }
